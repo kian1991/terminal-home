@@ -1,1 +1,1 @@
-export default class Temrinal {}
+export default class Terminal {}
