@@ -3,6 +3,7 @@ import Terminal from './terminal';
 import chalk from 'chalk';
 import { NewsFeed } from '../media/news-feed';
 import { exec } from 'child_process';
+import radioPlayer from '../media/radio-player';
 
 const FULL_ACTIONS = [
   { value: 'NEWS', name: 'Show News' },
@@ -92,8 +93,18 @@ export default class TerminalHome extends Terminal {
       case 'NEWS':
         this.printNews();
         break;
+      case 'RADIO':
+        // Start the radio
+        radioPlayer.play('http://cdn.nrjaudio.fm/adwz1/de/56248/mp3_128.mp3');
+        this.askForAction('HOME');
+        break;
+      case 'RADIO_STOP':
+        radioPlayer.stop();
+        this.askForAction('HOME');
+        break;
       case 'EXIT':
         this.printContent('Byeee......🦭');
+        radioPlayer.stop();
         process.exit(0);
     }
   }
