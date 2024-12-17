@@ -1,1 +1,9 @@
-console.log('Hello World! I will be an awesome Terminal Assistant soon.');
+import chalk from 'chalk';
+import TerminalHome from './cli/terminal-home';
+
+async function main() {
+  const home = new TerminalHome();
+  home.printWelcome();
+}
+
+main();
